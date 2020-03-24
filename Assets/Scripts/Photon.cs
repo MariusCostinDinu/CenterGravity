@@ -9,14 +9,11 @@ public class Photon : MonoBehaviour
 
     void Update()
     {
-        GetMouseClickDown();
-       
+        GetMouseClickDown();       
     }
 
     void GetMouseClickDown ()
-    {
-
-       
+    {       
         if (Input.GetMouseButtonDown(button: 0))
         {
             SpawnPhoton();
@@ -27,7 +24,8 @@ public class Photon : MonoBehaviour
     {
         GameObject photonClone;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // mouse position
-        photonClone = Instantiate(photon, transform.TransformPoint(Vector3.left + localOffSet), Quaternion.Euler(0,0, transform.eulerAngles.z)) as GameObject;
+        photonClone = Instantiate(photon, transform.TransformPoint(Vector3.left + localOffSet), 
+            Quaternion.Euler(0,0, transform.eulerAngles.z)) as GameObject;
 
         Rigidbody2D projectileRigidBody = photonClone.AddComponent<Rigidbody2D>();
         projectileRigidBody.velocity = mousePos * 2.0f;
